@@ -25,7 +25,7 @@ const SearchBar = () => {
             <Search />
         </IconButton>
     </Paper>
-  )
+	)
 }
 
 export default SearchBar
