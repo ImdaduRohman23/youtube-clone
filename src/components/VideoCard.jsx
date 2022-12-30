@@ -23,7 +23,7 @@ const VideoCard = ({video: {id: {videoId}, snippet}}) => {
         </Link> <br />
         <Link to={snippet?.channelId ? `/channel/${snippet?.channelId}` : demoChannelUrl}>
           <Typography variant='subtile2' fontWeight='bold' color='gray'>
-            {snippet?.ChannelTitle || demoChannelTitle}
+            {snippet?.channelTitle || demoChannelTitle}
           </Typography>
         </Link>
       </CardContent>
