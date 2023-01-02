@@ -7,7 +7,7 @@ import { demoThumbnailUrl, demoVideoUrl, demoChannelUrl, demoChannelTitle, demoV
 const VideoCard = ({video: {id: {videoId}, snippet}}) => {
   
   return (
-    <Card sx={{width: {xs: '100%', sm: '100%',md: '100%'}, boxShadow: 'none', borderRaduis: 0}}>
+    <Card sx={{width: {xs: '100%', sm: '100%',md: '100%'}, boxShadow: 'none', borderRadius: 0}}>
       <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
         <CardMedia 
           image={snippet?.thumbnails?.high?.url || demoThumbnailUrl}
@@ -15,13 +15,14 @@ const VideoCard = ({video: {id: {videoId}, snippet}}) => {
           sx={{width: {xs: '100%', sm: '100%', md: '100%'}, height: 180}}
         />
       </Link>
-      <CardContent sx={{backgroundColor: '#1e1e1e', height: '106px'}}>
+      <CardContent sx={{backgroundColor: 'black', padding: '0px', paddingTop: '10px'}}>
         <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
-          <Typography variant='subtile1' fontWeight='bold' color='#fff' >
+          <Typography variant='subtile1' fontWeight='bold' color='#fff'>
             {snippet?.title.slice(0, 50) || demoVideoTitle.slice(0, 50) }
             {snippet?.title.length > 50 && <span>...</span>}
           </Typography>
-        </Link> <br />
+        </Link>
+        <div style={{height: '5px'}}></div>
         <Link to={snippet?.channelId ? `/channel/${snippet?.channelId}` : demoChannelUrl}>
           <Typography variant='subtile2' fontWeight='bold' color='gray'>
             {snippet?.channelTitle || demoChannelTitle}
