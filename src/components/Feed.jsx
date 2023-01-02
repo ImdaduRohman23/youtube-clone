@@ -24,7 +24,7 @@ const Feed = () => {
         </Typography>
       </Box>
 
-      <Box p={2} sx={{overflowY: 'auto', flex: 2}}>
+      <Box p={{xs: '0', md: '15px'}} sx={{overflowY: 'auto', flex: 2}}>
         {
           selectedCategory === 'New' && <img src={cover} alt="" width={'100%'} />
         }
