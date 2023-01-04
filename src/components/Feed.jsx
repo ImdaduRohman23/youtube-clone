@@ -26,9 +26,12 @@ const Feed = () => {
 
       <Box p={{xs: '0', md: '15px'}} sx={{overflowY: 'auto', flex: 2}}>
         {
-          selectedCategory === 'New' && <img src={cover} alt="" width={'100%'} />
+          selectedCategory === 'New' && 
+          <div className="feed__heroes">
+            <img src={cover} alt=""/>
+          </div>
         }
-        <Typography variant='h4' fontWeight='bold' mb={2} sx={{color: 'white'}}>
+        <Typography variant='h4' fontWeight='bold' mb={2} sx={{color: 'white', marginTop: '20px'}}>
           {selectedCategory} <span style={{color: '#f31503'}}>Videos</span>
         </Typography>
         <Videos videos={videos} />

@@ -35,7 +35,7 @@ a {
 }
 
 .react-player {
-  height: 65vh !important;
+  /* height: 65vh !important; */
   width: 100% !important;
 }
 
@@ -62,6 +62,17 @@ a {
   transition: all 0.3s ease;
 }
 
+.feed__heroes {
+  width: 100%;
+  background:  #fc1503;
+  /* display: flex;
+  justify-content: center; */
+}
+
+.feed__heroes img {
+  width: 55%;
+}
+
 .videos__box:hover {
   opacity: 0.5;
 };
@@ -76,6 +87,9 @@ a {
   .copyright{
     display:none !important;
   }
+  .feed__heroes img {
+    width: 65%;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -85,5 +99,9 @@ a {
 
   .search-bar{
     width:200px;
+  }
+
+  .feed__heroes img {
+    width: 75%;
   }
 }

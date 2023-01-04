@@ -9,7 +9,6 @@ const VideoDetail = () => {
   const [videoDetail, setVideoDetail] = useState(null);
   const [videos, setVideos] = useState(null);
   const {id} = useParams();
-  console.log(videoDetail)
 
   useEffect(() => {
     fetchFromAPI(`videos?part=snippet,statistic&id=${id}`)
@@ -30,12 +29,12 @@ const VideoDetail = () => {
         <Box flex={1} py={{sx: 0, md: 3}} px={{sx: 0, md: 3}}>
           <Box sx={{width: '100%', possition: 'sticky', top: '86px'}}>
             <ReactPlayer url={`https://www.youtube.com/watch?v=${id}`} className='react-player' controls/>
-            <Typography color='#fff' variant='h5' fontWeight='bold' py={2} borderBottom='1px solid rgb(140, 140, 140)'>
+            <Typography color='#fff' variant='h5' fontWeight='bold' py={2} px={1} borderBottom='1px solid rgb(140, 140, 140)'>
               {title}
             </Typography>
             <Stack direction='row' justifyContent='space-between' sx={{color: '#fff',}} py={1} borderBottom='1px double rgb(140, 140, 140)'>
               <Link to={`/channel/${channelId}`} >
-                <Typography variant={{sm: 'subtitle1', md: 'h6'}} color='#fff'>
+                <Typography variant={{sm: 'subtitle1', md: 'h6'}} color='#fff' px={1}>
                   {channelTitle}
                 </Typography>
               </Link>
@@ -51,7 +50,7 @@ const VideoDetail = () => {
           </Box>
         </Box>
         <Box px={2} py={{md: 1, xs: 5}} justifyContent='center' alignItems='center' sx={{overflowY: 'auto', height: '95vh' }} marginTop={3}>
-          <Videos videos={videos} direction='column' md= '80%'/>
+          <Videos videos={videos} direction='column' md= '80%' sm='100%'/>
         </Box>
       </Stack>
     </Box>
