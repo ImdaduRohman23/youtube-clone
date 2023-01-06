@@ -78,8 +78,8 @@ a {
 .feed__heroes {
   width: 100%;
   background:  #fc1503;
-  /* display: flex;
-  justify-content: center; */
+  display: flex;
+  align-items: center;
 }
 
 .feed__heroes img {
@@ -88,7 +88,7 @@ a {
 
 .videos__box:hover {
   opacity: 0.5;
-};
+}
 
 @media screen and (max-width: 900px) {
   .category-btn{

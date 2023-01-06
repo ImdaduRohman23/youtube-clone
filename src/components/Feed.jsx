@@ -1,4 +1,4 @@
-import { Box, Stack, Typography } from '@mui/material'
+import { Box, Skeleton, Stack, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react';
 import SideBar from './SideBar';
 
@@ -7,12 +7,17 @@ import Videos from './Videos';
 import cover from '../asets/cover.png';
 
 const Feed = () => {
-  const [selectedCategory, setSelectedCategory] = useState('New')
+  const [selectedCategory, setSelectedCategory] = useState('New');
   const [videos, setVideos] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true)
     fetchFromAPI(`search?part=snippet&q=${selectedCategory}`)
-      .then(data => setVideos(data.items))
+      .then(data => {
+        setVideos(data.items)
+        setLoading(false)
+      })
   }, [selectedCategory]);
 
   return (
@@ -26,10 +31,12 @@ const Feed = () => {
 
       <Box p={{xs: '0', md: '15px'}} sx={{overflowY: 'auto', flex: 2}}>
         {
-          selectedCategory === 'New' && 
+          selectedCategory === 'New' && loading ?
+          <Skeleton variant="rectangular" width={'100%'} sx={{background: '#404040', height: {xs: '30vh', md: '45vh'}}} /> 
+          :
           <div className="feed__heroes">
             <img src={cover} alt=""/>
-          </div>
+          </div> 
         }
         <Typography variant='h4' fontWeight='bold' mb={2} sx={{color: 'white', marginTop: '20px'}}>
           {selectedCategory} <span style={{color: '#f31503'}}>Videos</span>
