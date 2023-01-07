@@ -6,11 +6,12 @@ import logo from '../asets/logo.png';
 
 const Navbar = () => {
   return (
-    <Stack
-      direction='row'
-      alignItems='center'
-      p={2}
-      sx={{position: 'sticky', background:'rgba(250, 250, 250, 0.1)', justifyContent: 'space-between', borderBottom: '1px solid rgb(140, 140, 140)'}}
+    <Stack direction='row' alignItems='center' p={2}
+      sx={{
+        position: 'sticky', 
+        background:'rgba(250, 250, 250, 0.1)', 
+        justifyContent: 'space-between', 
+        borderBottom: '1px solid rgb(140, 140, 140)'}}
     >
       <Link to='/' style={{display: 'flex', flexDirection: 'column' ,alignItem: 'center'}}>
         <img src={logo} alt="logo" width={'40px'} style={{borderRadius: '10%'}}/>

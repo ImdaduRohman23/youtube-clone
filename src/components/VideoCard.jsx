@@ -1,21 +1,25 @@
-import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 import React from 'react';
+import { demoThumbnailUrl, demoVideoUrl, demoChannelUrl, demoChannelTitle, demoVideoTitle } from '../utils/constants';
+import { Card, CardContent, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import LiveTvIcon from '@mui/icons-material/LiveTv';
-import { demoThumbnailUrl, demoVideoUrl, demoChannelUrl, demoChannelTitle, demoVideoTitle } from '../utils/constants';
+import Skeleton from '@mui/material/Skeleton';
 
-const VideoCard = ({video: {id: {videoId}, snippet}}) => {
+const VideoCard = ({video: {id: {videoId}, snippet}, loading}) => {
   
   return (
     <Card sx={{width: '100%', boxShadow: 'none', borderRadius: 0}}>
-      <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
-        <CardMedia 
-          image={snippet?.thumbnails?.high?.url || demoThumbnailUrl}
-          alt={snippet?.title}
-          sx={{width: '100%', height: {xs: '300px', md: '180px'}, paddingBottom: '20px'}}
-        />
-      </Link>
+      {
+        loading ? 
+        <Skeleton variant="rectangular" width={'100%'} height={200} sx={{background: '#404040'}} />
+        :
+        <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
+          <img className='img-videos' src={snippet?.thumbnails?.high?.url || demoThumbnailUrl} alt={snippet?.title} />
+        </Link>
+      }
+
       <CardContent sx={{backgroundColor: 'black', padding: {xs: 1, md: 0}}}>
+        <div style={{height: '5px'}}></div>
         <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
           <Typography variant='subtile1' fontWeight='bold' color='#fff'>
             {snippet?.title.slice(0, 50) || demoVideoTitle.slice(0, 50) }

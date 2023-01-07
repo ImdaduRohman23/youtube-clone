@@ -1,10 +1,9 @@
-import { Box, Skeleton, Stack, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react';
-import SideBar from './SideBar';
-
-import { fetchFromAPI } from '../utils/fetchFromAPI';
-import Videos from './Videos';
+import { Box, Skeleton, Stack, Typography } from '@mui/material';
 import cover from '../asets/cover.png';
+import { fetchFromAPI } from '../utils/fetchFromAPI';
+import SideBar from './SideBar';
+import Videos from './Videos';
 
 const Feed = () => {
   const [selectedCategory, setSelectedCategory] = useState('New');
@@ -38,12 +37,20 @@ const Feed = () => {
             <img src={cover} alt=""/>
           </div> 
         }
-        <Typography variant='h4' fontWeight='bold' mb={2} sx={{color: 'white', marginTop: '20px'}}>
-          {selectedCategory} <span style={{color: '#f31503'}}>Videos</span>
-        </Typography>
-        <Videos videos={videos} />
+        {
+          loading ? 
+          <Skeleton variant="text" width={250} sx={{ fontSize: '4rem', background: '#404040'}} />
+          :
+          <Typography variant='h4' fontWeight='bold' mb={2} sx={{color: 'white', marginTop: '20px', paddingLeft: {xs: '10px', md: '0px'}}}>
+            {selectedCategory} <span style={{color: '#f31503'}}>Videos</span>
+          </Typography>
+        }
+        {
+          loading ?
+          <h3 style={{color: '#404040'}}>Loading . . </h3>
+          :
+          <Videos videos={videos} loading={loading}/>}
       </Box>
-
     </Stack>
   )
 }

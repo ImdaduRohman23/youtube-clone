@@ -1,6 +1,6 @@
-import { Stack } from '@mui/material';
 import React from 'react';
 import { categories } from '../utils/constants';
+import { Stack } from '@mui/material';
 
 const SideBar = ({selectedCategory, setSelectedCategory}) => {
   return (
@@ -37,7 +37,6 @@ const SideBar = ({selectedCategory, setSelectedCategory}) => {
           >{category.name}</span>
 				</button>
 			))}
-
 		</Stack>
   )
 }

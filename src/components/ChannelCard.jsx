@@ -1,6 +1,6 @@
-import { Box, CardContent, CardMedia, Typography } from '@mui/material'
-import React from 'react'
-import { demoProfilePicture } from '../utils/constants'
+import React from 'react';
+import { Box, CardContent, CardMedia, Typography } from '@mui/material';
+import { demoProfilePicture } from '../utils/constants';
 
 const ChannelCard = ({channelDetail}) => {
   return (

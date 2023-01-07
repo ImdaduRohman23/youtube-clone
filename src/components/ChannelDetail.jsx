@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { fetchFromAPI } from '../utils/fetchFromAPI';
 import ChannelCard from './ChannelCard';
+import { fetchFromAPI } from '../utils/fetchFromAPI';
+import { useParams } from 'react-router-dom';
 import Videos from './Videos';
 
 const ChannelDetail = () => {
   const [channelDetail, setChannelDetail] = useState(null);
   const [videos, setVideos] = useState([]);
   const {id} = useParams();
-  
 
   useEffect(() => {
     fetchFromAPI(`channels?part=snippet&id=${id}`)
