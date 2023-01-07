@@ -1,4 +1,4 @@
-import { Box, Stack, Typography } from '@mui/material'
+import { Box, Skeleton, Stack, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import ReactPlayer from 'react-player'
 import { Link, useParams } from 'react-router-dom';
@@ -9,24 +9,42 @@ const VideoDetail = () => {
   const [videoDetail, setVideoDetail] = useState(null);
   const [videos, setVideos] = useState(null);
   const {id} = useParams();
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
     fetchFromAPI(`videos?part=snippet,statistic&id=${id}`)
       .then((data) => {
         setVideoDetail(data.items[0]);
-        setLoading(false);
       });
 
     fetchFromAPI(`search?part=snippet&relatedToVideoId=${id}&type=video`)
       .then((data) => setVideos(data.items));
   }, [id]);
 
-  if(!videoDetail?.snippet) return 'Loading . . .';
+  if(!videoDetail?.snippet) return (
+    <Box minHeight= '95vh' bgcolor={'black'} >
+      <Stack direction={{xs: 'column', md: 'row'}}>
+        <Box py={{sx: 0, md: 3}} px={{sx: 0, md: 3}} sx={{width: {xs: '100%', md: '60%'}}} >
+          <Skeleton variant="rectangular" width={'100%'} height={'60vh'} sx={{background: '#404040'}} />
+          <Skeleton variant="text" sx={{ fontSize: '3rem', background: '#404040' }} />
+          <Skeleton variant="text" sx={{ fontSize: '2rem', background: '#404040' }} />
+        </Box>
+        <Box px={2} py={{md: 1, xs: 5}} justifyContent='center' alignItems='center' sx={{overflowY: 'auto', height: '95vh', width:{xs: '100%', md: '40%'} }} marginTop={3}>
+          {/* <Videos videos={videos} direction='column' md= '95%' sm='100%'/> */}
+          <Skeleton variant="rectangular" width={'100%'} height={250} sx={{background: '#404040', marginBottom: '5px'}} />
+          <Skeleton variant="text" sx={{ fontSize: '2rem', background: '#404040', marginBottom: '5px' }} />
+          <Skeleton variant="text" sx={{ fontSize: '1.5rem', background: '#404040', marginBottom: '20px' }} />
+          <Skeleton variant="rectangular" width={'100%'} height={250} sx={{background: '#404040', marginBottom: '5px'}} />
+          <Skeleton variant="text" sx={{ fontSize: '2rem', background: '#404040', marginBottom: '5px' }} />
+          <Skeleton variant="text" sx={{ fontSize: '1.5rem', background: '#404040', marginBottom: '20px' }} />
+          <Skeleton variant="rectangular" width={'100%'} height={250} sx={{background: '#404040', marginBottom: '5px'}} />
+          <Skeleton variant="text" sx={{ fontSize: '2rem', background: '#404040', marginBottom: '5px' }} />
+          <Skeleton variant="text" sx={{ fontSize: '1.5rem', background: '#404040', marginBottom: '20px' }} />
+        </Box>
+      </Stack>
+    </Box>
+  );
 
   const {snippet: {title, channelId, channelTitle}, statistics: {viewCount, likeCount}} = videoDetail;
-
 
   return (
     <Box minHeight= '95vh' bgcolor={'black'} >

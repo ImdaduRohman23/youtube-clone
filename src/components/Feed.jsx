@@ -47,7 +47,7 @@ const Feed = () => {
         }
         {
           loading ?
-          <h3 style={{color: '#404040'}}>Loading . . </h3>
+          <h3 style={{color: '#404040', height: '100vh'}}>Loading . . </h3>
           :
           <Videos videos={videos} loading={loading}/>}
       </Box>
