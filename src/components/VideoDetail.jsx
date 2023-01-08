@@ -1,8 +1,9 @@
-import { Box, Skeleton, Stack, Typography } from '@mui/material'
-import React, { useEffect, useState } from 'react'
-import ReactPlayer from 'react-player';
-import { Link, useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Box, Skeleton, Stack, Typography } from '@mui/material';
 import { fetchFromAPI } from '../utils/fetchFromAPI';
+import { Link, useParams } from 'react-router-dom';
+import ReactPlayer from 'react-player';
+import ReactLoading from 'react-loading';
 import Videos from './Videos';
 
 const VideoDetail = () => {
@@ -24,21 +25,16 @@ const VideoDetail = () => {
     <Box minHeight= '95vh' bgcolor={'black'} >
       <Stack direction={{xs: 'column', md: 'row'}}>
         <Box py={{sx: 0, md: 3}} px={{sx: 0, md: 3}} sx={{width: {xs: '100%', md: '60%'}}} >
-          <Skeleton variant="rectangular" width={'100%'} height={'60vh'} sx={{background: '#404040'}} />
+          <Skeleton variant="rectangular" width={'100%'} height={'60vh'} sx={{background: '#404040'}}>
+            <div className="video-wrapper">
+              <ReactPlayer url={`https://www.youtube.com/watch?v=${id}`} className='react-player' controls width='100%' height='100%'/>
+            </div>
+          </Skeleton>
           <Skeleton variant="text" sx={{ fontSize: '3rem', background: '#404040' }} />
           <Skeleton variant="text" sx={{ fontSize: '2rem', background: '#404040' }} />
         </Box>
-        <Box px={2} py={{md: 1, xs: 5}} justifyContent='center' alignItems='center' sx={{overflowY: 'auto', height: '95vh', width:{xs: '100%', md: '40%'} }} marginTop={3}>
-          {/* <Videos videos={videos} direction='column' md= '95%' sm='100%'/> */}
-          <Skeleton variant="rectangular" width={'100%'} height={250} sx={{background: '#404040', marginBottom: '5px'}} />
-          <Skeleton variant="text" sx={{ fontSize: '2rem', background: '#404040', marginBottom: '5px' }} />
-          <Skeleton variant="text" sx={{ fontSize: '1.5rem', background: '#404040', marginBottom: '20px' }} />
-          <Skeleton variant="rectangular" width={'100%'} height={250} sx={{background: '#404040', marginBottom: '5px'}} />
-          <Skeleton variant="text" sx={{ fontSize: '2rem', background: '#404040', marginBottom: '5px' }} />
-          <Skeleton variant="text" sx={{ fontSize: '1.5rem', background: '#404040', marginBottom: '20px' }} />
-          <Skeleton variant="rectangular" width={'100%'} height={250} sx={{background: '#404040', marginBottom: '5px'}} />
-          <Skeleton variant="text" sx={{ fontSize: '2rem', background: '#404040', marginBottom: '5px' }} />
-          <Skeleton variant="text" sx={{ fontSize: '1.5rem', background: '#404040', marginBottom: '20px' }} />
+        <Box px={2} py={{md: 1, xs: 5}} sx={{overflowY: 'auto', height: '95vh', width:{xs: '100%', md: '40%'}, display: 'flex', justifyContent: 'center'}} marginTop={3}>
+          <ReactLoading type={'spinningBubbles'} color={'#404040'} height={'30px'} width={'50px'} />
         </Box>
       </Stack>
     </Box>

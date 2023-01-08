@@ -32,7 +32,12 @@ const Feed = () => {
       <Box p={{xs: '0', md: '15px'}} sx={{overflowY: 'auto', flex: 2}}>
         {
           loading ?
-          selectedCategory === 'New' && <Skeleton variant="rectangular" width={'100%'} sx={{background: '#404040', height: {xs: '30vh', md: '45vh'}}} /> 
+          selectedCategory === 'New' && 
+          <Skeleton variant="rectangular" sx={{background: '#404040'}}>
+            <div className="feed__heroes">
+              <img src={cover} alt=""/>
+            </div> 
+          </Skeleton> 
           :
           selectedCategory === 'New' && 
           <div className="feed__heroes">

@@ -10,7 +10,7 @@ const ChannelCardSkeleton = () => {
       <Skeleton variant="text" width={250} sx={{ fontSize: '3rem', background: '#404040'}} />
       <Skeleton variant="text" width={250} sx={{ fontSize: '2rem', background: '#404040', marginBottom: '30px'}} />
       <ReactLoading type={'spinningBubbles'} color={'#404040'} height={'30px'} width={'50px'} />
-  </Stack>
+    </Stack>
   )
 }
 
