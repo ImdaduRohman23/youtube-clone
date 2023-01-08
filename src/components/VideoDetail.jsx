@@ -1,6 +1,6 @@
 import { Box, Skeleton, Stack, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
-import ReactPlayer from 'react-player'
+import ReactPlayer from 'react-player';
 import { Link, useParams } from 'react-router-dom';
 import { fetchFromAPI } from '../utils/fetchFromAPI';
 import Videos from './Videos';
