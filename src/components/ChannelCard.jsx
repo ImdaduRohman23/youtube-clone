@@ -3,6 +3,7 @@ import { Box, CardContent, CardMedia, Typography } from '@mui/material';
 import { demoProfilePicture } from '../utils/constants';
 
 const ChannelCard = ({channelDetail}) => {
+  console.log(channelDetail)
   return (
     <div>
       <div className="channelCard__backdrop" style={{background: 'linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(251,0,0,1) 55%, rgba(5,0,1,1) 100%)', width: '100%', height: '200px'}}></div>

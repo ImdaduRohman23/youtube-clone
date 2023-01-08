@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Box, Skeleton, Stack, Typography } from '@mui/material';
 import cover from '../asets/cover.png';
 import { fetchFromAPI } from '../utils/fetchFromAPI';
+import ReactLoading from 'react-loading';
 import SideBar from './SideBar';
 import Videos from './Videos';
 
@@ -48,7 +49,9 @@ const Feed = () => {
         }
         {
           loading ?
-          <h3 style={{color: '#404040', height: '100vh'}}>Loading . . </h3>
+          <div style={{ height: '100vh', display: 'flex', justifyContent: 'center'}}>
+            <ReactLoading type={'spinningBubbles'} color={'#404040'} height={'30px'} width={'50px'} />
+          </div>
           :
           <Videos videos={videos} loading={loading}/>}
       </Box>
