@@ -54,7 +54,7 @@ const Feed = () => {
         }
         {
           loading ?
-          <div style={{ height: '100vh', display: 'flex', justifyContent: 'center'}}>
+          <div style={{ height: '100vh', display: 'flex', justifyContent: 'center', paddingTop: '20px'}}>
             <ReactLoading type={'spinningBubbles'} color={'#404040'} height={'30px'} width={'50px'} />
           </div>
           :
